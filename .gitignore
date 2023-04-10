@@ -41,3 +41,6 @@ class-notes/
 ./pre_aed
 ./interpola
 ./interpola3
+*.vscode
+*.o
+*.out
