@@ -44,3 +44,5 @@ class-notes/
 *.vscode
 *.o
 *.out
+*.o
+*.exe
