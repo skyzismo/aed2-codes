@@ -31,12 +31,19 @@ Repo para salvar códigos úteis da disciplina de AED II
 ### Keywords para mensagens de commit:
 
 -feat: Add user authentication
+
 -fix: Resolve issue with user login
+
 -chore: Update dependencies
+
 -docs: Update README with installation instructions
+
 -style: Format code using Prettier
+
 -refactor: Simplify user authentication logic
+
 -test: Add unit tests for login endpoint
+
 -build: Update webpack configuration
 
 - Use for performance improvements.
