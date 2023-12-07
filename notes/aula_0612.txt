@@ -1,0 +1,24 @@
+Acesso de valores de variáveis:
+
+printf("%d", idade);
+printf("%s", nome);
+printf("%2lf", nota); máscara: a nota será um ponto flutuante com 2 casas
+
+Acesso de área de memória (operador unário &)
+
+printf("%p", &idade); recuperação de área de memória
+
+varável -> valor e endereço associado -> manipulação de valores associados dado o endereço de memória
+
+havendo declaração em contexto local, o contexo global será sobreposto
+
+ponteiros -> TD que permite armazenar varíaveis em endereços de memória
+
+nome -> valor
+referencia -> área da memória
+
+--Alocação Dinâmica de Memória--
+
+- Declaração:
+
+    malloc(); -> retorna um ponteiro neutro, o programador quem define o tipo

@@ -19,13 +19,14 @@ Repo para salvar códigos úteis da disciplina de AED II
 ## Guia de setup do ambiente
 
 1. Clonar o repo: `git clone https://github.com/skyzismo/aed2-codes.git`
-2. Listar branches remotas: `git branch -r`
-3. Mudar para develop: `git checkout develop`
+2. Receber atualizações: `git fetch`
+3. Listar branches remotas: `git branch -r`
+4. Mudar para develop: `git checkout develop`
 
 ### Quando arquivos forem adicionados ou modificados:
 
-4. Adicionar email na máquina: `git config --global user.email "you@example.com"`
-5. Adicionar username na máquina: `git config --global user.name "Your Name"`
+4.1 Configurar credenciais de email: `git config --global user.email "you@example.com"`
+4.2 Configurar credenciais de username: `git config --global user.name "Your Name"`
 
 ### Keywords para mensagens de commit:
 
