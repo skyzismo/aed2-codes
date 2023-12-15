@@ -8,3 +8,5 @@ Lista: agrupador de elementos
         Ordem de acesso criada com o encadeamento dos ponteiros -> sequência de ponteiros
         L(i-1) < L < L(i+1) -> para add o elemento 9, o 10 e 11 tem que existir
         LSE -> só tem uma direção de encaminhamento 
+
+        Acesso na ordem reversa: -1 (último), -2 (penúltimo)...

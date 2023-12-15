@@ -15,6 +15,7 @@ Repo para salvar códigos úteis da disciplina de AED II
 3. `$ pacman -S mingw-w64-ucrt-x86_64-gcc`
 4. `gcc --version`
 5. `gcc seu_arquivo.c -o nome_do_executavel`
+6. `gcc seu_arquivo.c -o nome_do_executavel -lm` para incorporar a lib math em sua comilação, e adicionar ainda assim a #include<math.h>
 
 ## Guia de setup do ambiente
 
