@@ -9,18 +9,18 @@ typedef struct elem_se
 
 } t_elemento_lse;
 
+// tipo associado a ponteiro para funcoes especialistas -> sabe o TAD que colocou na lista
+
+typedef void (*t_imprimir_lse)(int);
+
 typedef struct lse
 {
-    // enderecos dos elementos, ponteiros para t_elemento_lse
+    // enderecos dos elementos, ponteiros para t_elemento_lse, atributos de manipulacao de listas
     t_elemento_lse *inicio;
     t_elemento_lse *fim;
     t_imprimir_lse imprimir;
     int tamanho;
 } t_lse;
-
-// tipo associado a ponteiro para funcoes especialistas -> sabe o TAD que colocou na lista
-
-typedef void (*t_imprimir_lse)(int);
 
 t_elemento_lse *criar_elemento_lse(int carga_util)
 {
@@ -125,7 +125,7 @@ void imprimir_lista(t_lse *lse)
 
 void imprimir_nro(int nro)
 {
-    printf("%d", nro);
+    printf("%d\n", nro);
 }
 
 int main()
@@ -135,8 +135,6 @@ int main()
 
     // povoando a lista
     int num;
-
-    printf("leitura:\n");
     scanf("%d", &num);
 
     while (num >= 0)

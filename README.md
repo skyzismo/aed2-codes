@@ -26,8 +26,8 @@ Repo para salvar códigos úteis da disciplina de AED II
 
 ### Quando arquivos forem adicionados ou modificados:
 
-4.1 Configurar credenciais de email: `git config --global user.email "you@example.com"`
-4.2 Configurar credenciais de username: `git config --global user.name "Your Name"`
+4.1. Configurar credenciais de email: `git config --global user.email "you@example.com"`
+4.2. Configurar credenciais de username: `git config --global user.name "Your Name"`
 
 ### Keywords para mensagens de commit:
 
