@@ -31,21 +31,21 @@ Repo para salvar códigos úteis da disciplina de AED II
 
 ### Keywords para mensagens de commit:
 
--feat: Add user authentication
+- feat: Add user authentication
 
--fix: Resolve issue with user login
+- fix: Resolve issue with user login
 
--chore: Update dependencies
+- chore: Update dependencies
 
--docs: Update README with installation instructions
+- docs: Update README with installation instructions
 
--style: Format code using Prettier
+- style: Format code using Prettier
 
--refactor: Simplify user authentication logic
+- refactor: Simplify user authentication logic
 
--test: Add unit tests for login endpoint
+- test: Add unit tests for login endpoint
 
--build: Update webpack configuration
+- build: Update webpack configuration
 
 - Use for performance improvements.
 
@@ -71,6 +71,10 @@ merge: Merge feature-branch into main
 release: Version 1.2.0
 ```
 
+## Link para tutorial de markdown
+
+- [Markdown](https://commonmark.org/help/tutorial/)
+
 ## Contribuidor
 
-- Gadelha
+- [Gadelha](https://www.linkedin.com/in/lucas-gadelha-me/)
