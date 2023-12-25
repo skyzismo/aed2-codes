@@ -46,3 +46,4 @@ class-notes/
 *.out
 *.o
 *.exe
+*.md
