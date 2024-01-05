@@ -82,6 +82,23 @@ void inserir_final_lse(t_lse *lse, int carga_util)
     lse->tamanho++;
 }
 
+int remover_inicio_lse(t_lse *lse)
+{
+    t_elemento_lse *aux = lse->inicio;
+
+    int carga;
+
+    if (lse->inicio != NULL)
+    {
+        lse->inicio = aux->prox;
+        carga = aux->carga_util;
+        free(aux);
+        lse->tamanho--; // a cada operação de remoção, o tamanho da lista precisa diminuir
+    }
+
+    return (carga);
+}
+
 int acessar_lse(t_lse *lse, int pos)
 {
     // posicao eh colida através do tamanho da LSE
@@ -130,16 +147,16 @@ void imprimir_nro(int nro)
 
 int main()
 {
-    t_lse *nros = criar_lse(imprimir_nro);
+    t_lse *numeros = criar_lse(imprimir_nro);
     // t_lse *pls_ultimas_tocadas = criar_lse(imprimir_musica);
 
     // povoando a lista
     int num;
     scanf("%d", &num);
 
-    while (num >= 0)
+    while (num != 0)
     {
-        inserir_final_lse(nros, num);
+        inserir_final_lse(numeros, num);
         scanf("%d", &num);
     }
 
@@ -149,12 +166,25 @@ int main()
 
     while (pos > 0)
     {
-        num = acessar_lse(nros, pos);
+        num = acessar_lse(numeros, pos);
 
         printf("valor: %d na posicao: %d\n ", num, pos);
 
         scanf("%d", &pos);
     }
 
-    imprimir_lista(nros);
+    int removedor;
+    int removido;
+    scanf("%d", &removedor);
+
+    while (numeros->tamanho)
+    {
+        removido = remover_inicio_lse(numeros);
+
+        printf("o valor: %d foi removido \n", removido);
+
+        scanf("%d", &removedor);
+    }
+
+    imprimir_lista(numeros);
 }
