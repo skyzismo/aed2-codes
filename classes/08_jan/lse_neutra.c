@@ -27,14 +27,28 @@ struct lse
     t_elemento_lse *inicio;
     t_elemento_lse *fim;
     int tamanho;
+    t_imprimir_lse impressora;
 };
 
-t_lse *criar_lse()
+t_lse *criar_lse(t_imprimir_lse impressora)
 { //, t_comparar_lse comparar){
     t_lse *l = malloc(sizeof(t_lse));
     l->inicio = l->fim = NULL;
     l->tamanho = 0;
+    l->impressora = impressora;
     return l;
+}
+
+void imprimir_lse(t_lse *lse)
+{
+    t_elemento_lse *cam = lse->inicio;
+
+    while (cam != NULL)
+    {
+        // printf("%p\n", cam->carga_util);
+        lse->impressora(cam->carga_util);
+        cam = cam->prox;
+    }
 }
 
 void inserir_lse(t_lse *lse, void *carga_util) // insercao com carga util neutralizada

@@ -1,5 +1,6 @@
 // funcoes de manipulacao a lista, anda junto com a lse_neutra.c
 typedef struct lse t_lse;
+typedef void (*t_imprimir_lse)(void *);
 
 t_lse *criar_lse();
 void inserir_lse(t_lse *lse, void *carga_util);
