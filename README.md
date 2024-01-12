@@ -1,6 +1,6 @@
 # AED2
 
-*Repo para salvar algumas anotações e códigos úteis da disciplina de AED II*
+_Repo para salvar algumas anotações e códigos úteis da disciplina de AED II_
 
 ### Guia de instalação do compilador:
 
@@ -16,6 +16,7 @@
 4. `gcc --version` confere se o compilador está instalado
 5. `gcc seu_arquivo.c -o nome_do_executavel`
 6. `gcc seu_arquivo.c -o nome_do_executavel -lm` serve para **incorporar a lib math em sua compilação**, mas é preciso adicionar ainda assim a **#include<math.h>** nas libs do código
+7. `gcc *.c -o usa_lse` para compilar até N arquivos .c ao mesmo tempo, e integrar em um único executável, mas dentre os .c, APENAS UM DEVE CONTER A FUNÇÃO main()
 
 ### Guia de setup do ambiente
 
@@ -71,7 +72,9 @@ merge: Merge feature-branch into main
 ```plaintext
 release: Version 1.2.0
 ```
+
 ###### **Links Úteis:**
+
 ###### 1. Link para tutorial de markdown: [Markdown](https://commonmark.org/help/tutorial/)
 
 ###### 2. Contribuidor: [Lucas Gadelha](https://www.linkedin.com/in/lucas-gadelha-me/)
