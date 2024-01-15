@@ -147,3 +147,41 @@ void *buscar_lse(t_lse *lse, void *buscado)
         return NULL;
     }
 }
+
+void inserir_ordenado_lse(t_lse *lse, void *carga)
+{
+    t_elemento_lse *novo = criar_elemento_lse(carga);
+
+    if (lse->inicio == NULL)
+    {
+        lse->inicio = lse->fim = novo;
+    }
+    else
+    {
+        t_elemento_lse *anterior = NULL;
+        t_elemento_lse *caminhador = lse->inicio;
+
+        while ((caminhador != NULL) && (lse->comparador(caminhador->carga_util, carga) <= 0))
+        {
+            anterior = caminhador;
+            caminhador = caminhador->prox;
+        }
+        if (caminhador == NULL) // inserir no final
+        {
+            lse->fim->prox = novo;
+            lse->fim = novo;
+        }
+        else if (caminhador == lse->inicio) // inserir no inicio
+        {
+            novo->prox = lse->inicio;
+            lse->inicio = novo;
+        }
+        else // inserir entre dois elementos
+        {
+            anterior->prox = novo;
+            novo->prox = caminhador;
+        }
+    }
+
+    lse->tamanho++;
+}

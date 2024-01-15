@@ -52,16 +52,20 @@ int main(int argc, char const *argv[])
         scanf("%s", genero);
         scanf("%d", &duracao);
 
-        inserir_final_lse(playlist, criar_musica(nome, genero, duracao));
+        inserir_ordenado_lse(playlist, criar_musica(nome, genero, duracao));
+
+        // inserir_final_lse(playlist, criar_musica(nome, genero, duracao));
 
         scanf("%s", nome);
     }
 
-    char buscado[60];
+    // char buscado[60]; para string do nome
 
-    scanf("%s", buscado);
+    t_musica *buscado = malloc(sizeof(t_musica)); // agora, o buscado é a música, com seus atributoa
 
-    t_musica *m = buscar_lse(playlist, buscado);
+    scanf("%s", buscado->nome);
+
+    t_musica *m = buscar_lse(playlist, (void *)buscado);
 
     if (m != NULL)
     {
