@@ -17,6 +17,7 @@ _Repo para salvar algumas anotações e códigos úteis da disciplina de AED II_
 5. `gcc seu_arquivo.c -o nome_do_executavel`
 6. `gcc seu_arquivo.c -o nome_do_executavel -lm` serve para **incorporar a lib math em sua compilação**, mas é preciso adicionar ainda assim a **#include<math.h>** nas libs do código
 7. `gcc *.c -o usa_lse` para compilar até N arquivos .c ao mesmo tempo, e integrar em um único executável, mas dentre os .c, APENAS UM DEVE CONTER A FUNÇÃO main()
+8. `./tocador < ent01.in` para ler dados de um arquivo
 
 ### Guia de setup do ambiente
 
