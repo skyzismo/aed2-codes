@@ -130,6 +130,13 @@ void *remover_inicio_lse(t_lse *lse)
 
     lse->tamanho--;
 
+    // remocao de lista com elemento único
+
+    if (lse->inicio == NULL)
+    {
+        lse->fim == NULL;
+    }
+
     return carga_util;
 }
 
