@@ -11,3 +11,4 @@ void destruir_lse(t_lse *lse);
 void imprimir_lse(t_lse *lse);
 void *buscar_lse(t_lse *lse, void *buscado);
 void inserir_ordenado_lse(t_lse *lse, void *carga);
+void *remover_inicio_lse(t_lse *lse);

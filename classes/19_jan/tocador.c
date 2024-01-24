@@ -2,6 +2,8 @@
 #include <stdlib.h>
 #include <string.h>
 #include "lse_neutra.h"
+#include "fila.h"
+#include "pilha.h"
 
 #define PLAYING 1
 #define PAUSE 2
@@ -9,6 +11,9 @@
 #define LOAD 4
 #define FINAL 5
 #define RESUME 6
+#define END 7
+#define FORWARD 8
+#define BACKWARD 9
 
 typedef struct
 {
@@ -46,6 +51,7 @@ int comparar_musica(void *musica1, void *musica2)
 
 // TODO: TAD playlist e biblioteca
 
+typedef struct playlist t_playlist;
 struct playlist
 {
     char nome[60];
@@ -53,7 +59,7 @@ struct playlist
     char descricao[1000];
     int qtd;
     int dia, mes, ano;
-    void *musicas;
+    t_lse *musicas;
 };
 
 typedef struct biblioteca t_biblioteca;
@@ -62,6 +68,9 @@ struct biblioteca
 {
     t_lse *musicas;
     t_lse *playlists;
+    t_lse *generos;
+    t_lse *artistas;
+    t_lse *albuns;
 };
 
 typedef struct tocador t_tocador;
@@ -70,6 +79,13 @@ struct tocador
 {
     int status;
     t_musica *faixa_carregada;
+
+    // fila de reproducao
+    t_fila *proximas;
+
+    // ultimas tocadas
+
+    t_pilha *ultimas;
 
     // biblioteca de musicas
 };
@@ -80,6 +96,8 @@ t_tocador *criar_tocador()
 
     novo->status = STOP;
     novo->faixa_carregada = NULL;
+    novo->proximas = criar_fila();
+    novo->ultimas = criar_pilha();
 
     return novo;
 }
@@ -97,10 +115,13 @@ void play_tocador(t_tocador *t)
 
 void pause_tocador(t_tocador *t)
 {
-    printf("Pausando\n");
-    imprimir_musica(t->faixa_carregada);
+    if (t->status == PLAYING)
+    {
+        printf("Pausando\n");
+        imprimir_musica(t->faixa_carregada);
 
-    t->status = PAUSE;
+        t->status = PAUSE;
+    }
 }
 
 void stop_tocador(t_tocador *t)
@@ -116,12 +137,17 @@ void loading_tocador(t_tocador *t)
 {
     if (t->status == STOP)
     {
-        t->faixa_carregada = malloc(sizeof(t_musica));
-        scanf("%s", t->faixa_carregada->nome);
-        scanf("%s", t->faixa_carregada->genero);
-        scanf("%d", &(t->faixa_carregada->duracao));
+        t->faixa_carregada = NULL;
+        if (!(vazia_fila(t->proximas))) // se a fila nao esta vazia
+        {
+            t->faixa_carregada = primeiro_fila(t->proximas);
+            t->status = LOAD;
+        }
 
-        t->status = LOAD;
+        // t->faixa_carregada = malloc(sizeof(t_musica));
+        // scanf("%s", t->faixa_carregada->nome);
+        // scanf("%s", t->faixa_carregada->genero);
+        // scanf("%d", &(t->faixa_carregada->duracao));
     }
 }
 
@@ -135,10 +161,68 @@ void resume_tocador(t_tocador *t)
     }
 }
 
+void end_tocador(t_tocador *t)
+{
+    if (t->status == PLAYING)
+    {
+        t->status = STOP;
+        t_musica *m = desenfileirar(t->proximas);
+        empilhar(t->ultimas, m);
+
+        // loading_tocador(t);
+    }
+}
+
+void forward_tocador(t_tocador *t)
+{
+    if (!vazia_fila(t->proximas))
+    {
+        t_musica *m = desenfileirar(t->proximas);
+        t->faixa_carregada = primeiro_fila(t->proximas);
+
+        printf("Avancando...");
+
+        imprimir_musica(m);
+        empilhar(t->ultimas, m);
+    }
+}
+
+void backward_tocador(t_tocador *t)
+{
+    if (altura_pilha(t->ultimas) > 0)
+    {
+        t_musica *m = desempilhar(t->ultimas);
+        t->faixa_carregada = m;
+
+        imprimir_musica(m);
+        enfileirar(t->proximas, m);
+    }
+}
+
+static void loading_proximas(t_tocador *t)
+{
+    int status;
+    scanf("%d", &status);
+
+    while (status == 1)
+    {
+        t_musica *musica = malloc(sizeof(t_musica));
+
+        scanf("%s", musica->nome);
+        scanf("%s", musica->genero);
+        scanf("%d", &(musica->duracao));
+
+        enfileirar(t->proximas, musica);
+        scanf("%d", &status);
+    }
+}
+
 int main(int argc, char const *argv[])
 {
     int acao;
     t_tocador *tocador = criar_tocador();
+
+    loading_proximas(tocador);
 
     do
     {
@@ -166,8 +250,22 @@ int main(int argc, char const *argv[])
             resume_tocador(tocador);
             break;
 
+        case FORWARD:
+            forward_tocador(tocador);
+            break;
+
+        case BACKWARD:
+            backward_tocador(tocador);
+            break;
+
+        case END:
+            end_tocador(tocador);
+            break;
+
         default:
             break;
         }
     } while (acao != FINAL);
+
+    imprimir_musica(topo(tocador->ultimas));
 }
