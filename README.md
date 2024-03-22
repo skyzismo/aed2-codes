@@ -26,8 +26,10 @@ _Repo para salvar algumas anotações e códigos úteis da disciplina de AED II_
 3. Listar branches remotas: `git branch -r`
 4. Mudar para develop: `git checkout develop`
 5. Receber atualizações da branch: `git pull`
+6. Refazer um último commit: `git reset --soft HEAD~`
+7. Remover arquivos da área de staging `git reset --soft HEAD~`
 
-#### Quando arquivos forem adicionados ou modificados:
+#### Configuração de credenciais para 'pushar' commits em um novo :
 
 1. Configurar credenciais de email: `git config --global user.email "you@example.com"`
 2. Configurar credenciais de username: `git config --global user.name "Your Name"`

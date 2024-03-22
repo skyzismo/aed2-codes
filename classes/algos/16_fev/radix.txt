@@ -1,0 +1,7 @@
+estabilidade é o algoritmo manter a ordem relativas ao vetor ordenado
+
+caminha pelo vetor original > faz o levantamento de repeticoes O(n)
+
+passar pelo levantametno de repeticoes e ordenar O(k)
+
+gerar o novo vetor O(n + k)
